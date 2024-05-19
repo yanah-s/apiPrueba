@@ -24,5 +24,6 @@ const usuarioSchema = new mongoose.Schema({
 });
 console.log('Hola Yana');
 console.log('Hola Santi');
+console.log('Como estas?');
 module.exports = mongoose.model('Usuario', usuarioSchema);
 
