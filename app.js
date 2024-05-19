@@ -8,6 +8,7 @@ mongoose.connect('mongodb://localhost:27017/apiPrueba', {useNewUrlParser: true, 
     .then(() => console.log('Conectado a MongoDB...'))
     .catch(err => console.log('No se pudo conectar con MongoDB..', err));
 
+    //http://3.16.90.77/
 
 const app = express();
 app.use(express.json());
