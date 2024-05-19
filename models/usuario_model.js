@@ -22,6 +22,6 @@ const usuarioSchema = new mongoose.Schema({
         required: false        
     }
 });
-
+console.log('Hola Yana');
 module.exports = mongoose.model('Usuario', usuarioSchema);
 
