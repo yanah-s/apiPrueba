@@ -1,22 +1,26 @@
-const usuarios = require('./routes/usuarios');
-const cursos = require('./routes/cursos');
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors'); // Importa cors
+const usuarios = require('./routes/usuarios');
+const cursos = require('./routes/cursos');
 
-//Conectarnos a la BD
-mongoose.connect('mongodb://localhost:27017/apiPrueba', {useNewUrlParser: true, useUnifiedTopology: true})
+// Conectar a la BD
+mongoose.connect('mongodb://localhost:27017/apiPrueba', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Conectado a MongoDB...'))
     .catch(err => console.log('No se pudo conectar con MongoDB..', err));
 
-    //http://3.16.90.77/
-
 const app = express();
+const port = process.env.PORT || 3000;
+
+// Configurar CORS
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
+
+// Rutas
 app.use('/api/usuarios', usuarios);
 app.use('/api/cursos', cursos);
 
-const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log('Api RESTFul Ok, y ejecutándose...');
-})
+    console.log(`API RESTFul Ok, y ejecutándose en el puerto ${port}`);
+});
